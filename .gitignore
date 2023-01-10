@@ -361,3 +361,11 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/hello/hello.cpp
+/hello/hello.sln
+/hello/hello.vcxproj.filters
+/hello/hello.vcxproj
+/.gitignore
+/.gitignore
+/.gitignore
+/.gitignore
