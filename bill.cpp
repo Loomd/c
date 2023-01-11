@@ -1,7 +1,6 @@
 // psuedocode, program that determines monthly phone bill.
 // add preprocessor directives. 
 #include <iostream>
-#include <istream>
 using namespace std;
 
 // create method, function
