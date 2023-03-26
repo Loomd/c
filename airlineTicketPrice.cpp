@@ -1,6 +1,6 @@
 // Aaron Hunter
 // Unit 5 Programming Assignment 7 - Airline Ticket Price
-// Write a C++ program that accepts a ticket price and a child’s age from the user, then determines the discount and the discounted ticket price.
+// Write a C++ program that accepts a ticket price and a childï¿½s age from the user, then determines the discount and the discounted ticket price.
 #include <iostream>
 #include <iomanip>
 
@@ -48,7 +48,7 @@ int main() {
 
         discountAmount = ticketPrice * discount;
         discountPrice = ticketPrice * (1 - discount);
-        
+
         cout << fixed << setprecision(2);
         printf("%-20s$%-7.2f\n", "Ticket Price:", ticketPrice);
         printf("%-20s%4d\n", "Customer Age:", childAge);
