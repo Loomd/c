@@ -55,7 +55,7 @@ int main () {
         }
 
         // Statements to account for rentalFee.
-        if (daysRented < MINIMUM_DAYS_RENTED) {
+        if (daysRented <= MINIMUM_DAYS_RENTED) {
             rentalFee = RENTAL_FEE_3_DAYS_OR_LESS * daysRented;
         } else {
             rentalFee = RENTAL_FEE_MORE_THAN_3_DAYS * daysRented;
