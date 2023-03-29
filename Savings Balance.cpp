@@ -28,20 +28,18 @@ int main (){
 
         // Asking user for inputs, catching negative or non-numerical values as errors.
         cout << "Enter your deposit amount: ";
-        while(!(cin >> principal ||  principal < 0)) {
-            cout << "\nERROR: Please enter a non-negative numerical value: ";
+        while (!(cin >> principal) || principal < 0) {
+            cout << "\nERROR: Please enter a positive numerical value: ";
             cin.clear();
             cin.ignore(1000, '\n');
-            continue;
-        }
+}
 
         cout << "\nEnter your annual interest rate: ";
-        while(!(cin >> interestRate || interestRate < 0)) {
-            cout << "\nERROR: Please enter a non-negative numerical value: ";
+        while (!(cin >> interestRate) || interestRate < 0) {
+            cout << "\nERROR: Please enter a positive numerical value: ";
             cin.clear();
-            cin.ignore(1000, 'n');
-            continue;
-        }
+            cin.ignore(1000, '\n');
+}
 
         // Starting balance is principal.
         balance = principal;
