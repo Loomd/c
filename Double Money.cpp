@@ -7,6 +7,30 @@
 #include <cstdio>
 using namespace std;
 
+const int COLUMN_WIDTH = 10;
+const int SENTINEL_VALUE = 1000;
+const double DOUBLE = 2.0;
+
 int main (){
 
+    int month = 1;
+    double balance = 1.0;
+    string outputString = "";
+    char outBuffer[1000];
+
+    snprintf(outBuffer, sizeof(outBuffer), "%-*s%*s\n%s", COLUMN_WIDTH, "Month", COLUMN_WIDTH+5, "Balance", "____________________________");
+    outputString += outBuffer;
+    
+    while(balance < SENTINEL_VALUE ){
+
+        balance *= DOUBLE;
+
+        snprintf(outBuffer, sizeof(outBuffer), "\n%-*d%*s%.2f", COLUMN_WIDTH, month, COLUMN_WIDTH, "$", balance);
+        outputString += outBuffer;
+
+        month++;
+    }
+
+    cout << outputString;
+    return 0;
 }
