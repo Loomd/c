@@ -369,3 +369,6 @@ FodyWeavers.xsd
 /.gitignore
 /.gitignore
 /.gitignore
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.vscode/settings.json
