@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 void clearScreen() {
@@ -9,10 +10,42 @@ void clearScreen() {
 #endif
 }
 
+bool solvePuzzle() {
+    string puzzle = "1000101";
+    int answer;
+    int attempts = 0;
+
+    while (attempts < 3) {
+        cout << "\nSolve the puzzle to continue: " << puzzle << ": ";
+        if(!(cin >> answer)){
+            cout << "ER..RROorORO..DO..BEtTeeERR\n";
+            cout << "Solve the puzzle to contiue: ";
+            cin.clear();
+            cin.ignore(100, '\n');
+            continue;
+        }
+        if (answer == 69) {
+            cout << "You solved the puzzle. Warp core repair in progress...\n";
+            break;
+        }
+        else {
+            attempts++;
+            cout << "Incorrect. You have " << 3 - attempts << " attempts left.\n";
+        }
+    }
+    if (attempts == 3) {
+        cout << "You failed to solve the puzzle. The panel explodes.\n";
+        return false;
+    }
+    return true;
+}
+
 // Program starts here.
 int main() {
 
 // Variables.
+char tryAgain;
+bool puzzle = false;
 int yesOrNo; // Enter the game.
 int choice1, subChoice1; // First menu, choice 1. Choice 1's sub-menu.
 int choice2, subChoice2; // First menu, Choice 2. Choice 2's sub-menu.
@@ -93,12 +126,26 @@ cout << "Welcome aboard the USS Enterprise. Do you wish to play 1/0: ";
 
                             // Choice 1's, sub-menu story.
                             if(subChoice1 == 1){
-                                cout << "\n\nYou rush to the warp core and begin working frantically to fix the problem.\n";
-                                cout << "Your hands move quickly over the controls as you try to stabilize the reactor.\n";
-                                cout << "Just when you think you've got it under control, a panel explodes in your face!\n";
-                                cout << "You wake up in sickbay several hours later with a bandage wrapped around your head.\n";
-                                cout << "The captain informs you that the warp core was successfully stabilized thanks to your efforts, but warns you to be more careful in the future.\n";
-                                // Continue the story here...
+                                while(true){
+                                    cout << "\n\nYou rush to the warp core and begin working frantically to fix the problem.\n";
+                                    cout << "Your hands move quickly over the controls as you try to stabilize the reactor.\n";
+                                    puzzle = solvePuzzle();
+                                        if (puzzle){
+                                            cout << "You successfully fixed the warp core.\n";
+                                            break;
+                                        }
+                                        else {
+                                            cout << "Just when you think you've got it under control, a panel explodes in your face!\n";
+                                            cout << "You wake up in sickbay several hours later with a bandage wrapped around your head.\n";
+                                            cout << "The captain informs you that the warp core was unsuccessfully stabilized.\n";
+                                            cout << "\n\nDo you want to try again? (Y/N): ";
+                                            cin >> tryAgain;
+                                                if (tryAgain == 'N' || tryAgain == 'n') {
+                                                    break; // Exit the loop and continue with the main story
+                                                }
+                                        }
+                                }
+
                             }else{
                                 cout << "\n\nYou attempt to negotiate a peaceful resolution with the Ferengi, but they are not interested in talking.\n";
                                 cout << "They open fire on your team and you are forced to retreat to the Enterprise.\n";
@@ -164,22 +211,7 @@ cout << "Welcome aboard the USS Enterprise. Do you wish to play 1/0: ";
                                             cout << "Without the proper defenses in place, the Enterprise falls quickly to the invaders and all is lost.\n";
                                             // Continue the story here...
                                         }
-
-                            // Choice 2's option 2. Try to find another way to disable.
-                            else {
-                                //
-                            }
-                break;
-
-                case 3:
-                    cout << "";
-                                        /*else{
-                                            cout << "\n\nYou activate the tractor beam and attempt to bring the Ferengi ship to a stop. However, the Ferengi ship is too powerful and the Enterprise's systems begin to fail.\n";
-                                            cout << "You quickly realize that you have made a grave mistake and the ship is lost. All that is left to do is evacuate the remaining crew members and abandon the ship.\n";
-                                            // Continue the story here...
-                                        } */
-                break;
-                }
+        }
     }
-cout << "\nLive long and prosper, Starfleet officer. Until we meet again.";
+    cout << "\nLive long and prosper, Starfleet officer. Until we meet again.";
 }
