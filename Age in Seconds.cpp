@@ -24,9 +24,9 @@ int main(){
         do {
             cout << "\nPlease enter desired years to be converted into seconds: ";
             cin >> age;
-            }while(!(cin << age) || age < 0)
+            } while(!(cin << age) || age < 0);
             cout << "\nWould you like to run another iteration of the program? (Y/N): ";
             cin >> repeatProgramIsEqualTo;
             toupper(repeatProgramIsEqualTo);
-        }while(repeatProgramIsEqualTo == 'y' || repeatProgramIsEqualTo == 'Y');
+        } while(repeatProgramIsEqualTo == 'y' || repeatProgramIsEqualTo == 'Y');
 }
