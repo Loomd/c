@@ -1,9 +1,9 @@
 // Aaron Hunter
 // Unit 5 Programming Assignment 9 - Electric Bill
-// Write a C++ program to get the amount of electricity used from the user (integer type) and calculate the customer’s bill.
+// Write a C++ program to get the amount of electricity used from the user (integer type) and calculate the customerï¿½s bill.
 #include <iostream>
-#include <iomanip>       // for fixed << setprecision()
-#include <cstdlib>       // for clearScreen()
+#include <iomanip>
+#include <cstdlib>
 using namespace std;
 
 const double FLAT_RATE = 9.85;
@@ -13,10 +13,9 @@ const int KWH_RANGE1 = 12;
 const int KWH_RANGE2 = 78;
 const int KWH_RANGE3 = 90;
 
-// found a better way to implement clearing the terminal 
 
 void clearScreen() {
-#ifdef _WIN32             // checks if target OS is windows
+#ifdef _WIN32       	// checks if target OS is windows
 	system("cls");
 #else                     // for linux/unix
 	system("clear");
@@ -89,7 +88,3 @@ int main()
 	} while (repeat);
 	return 0;
 }
-// I tried to add aditional error handling via another do-while loop and even attempted with an if else-if statement,
-// incase the end user was to input a non numerical value (!=0 or !=1). I couldn't quite nail it down for this assignment. 
-// I ran into a problem with an ifinite loop when I used continue; the subsequent code block from system("Pause") 
-// I didn't document the issues well enough to give a better description. 
