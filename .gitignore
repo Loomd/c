@@ -373,3 +373,4 @@ FodyWeavers.xsd
 .vscode/launch.json
 .vscode/settings.json
 .vscode/tasks.json
+CppProperties.json

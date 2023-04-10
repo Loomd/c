@@ -6,9 +6,6 @@
 #include <cstdlib>
 using namespace std;
 
-void clearScreen() {
-    system("cls||clear");
-}
 
 int main() {
 
@@ -22,9 +19,7 @@ cout << fixed << setprecision(0);
         cout << "\nEaster Sunday: enter a year (2000 or after): ";
             while(!(cin >> year) || year <= 2000) {
                 cout << "\nInvalid input, enter a year 2000 or after: ";
-                cin >> year;
             }
-                clearScreen();
 
                 remainderA = year % 19;
                 remainderB = year % 4;
@@ -38,7 +33,7 @@ cout << fixed << setprecision(0);
                     else {
                         cout << "\nIn the year " << year << " the date of Easter Sunday will be March " << day << ", " << year << "." << endl;
                     }
-        cout << "\nWould you like to enter another year (Y/N): ";
+        cout << "\n\nWould you like to enter another year (Y/N): ";
         cin >> yesOrNo;
         yesOrNo = toupper(yesOrNo);
     } while(yesOrNo == 'Y');
