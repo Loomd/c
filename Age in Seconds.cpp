@@ -17,7 +17,7 @@ int main() {
     do {
         cout << "Please enter the person's first and last name: ";
         getline(cin, name);
-        cin.ignore();
+        cin.clear();
 
         do {
             cout << "\nPlease enter the person's age in years (must be 0 or greater): ";
