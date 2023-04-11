@@ -16,8 +16,11 @@ cout << fixed << setprecision(0);
     do {
 
         cout << "\nEaster Sunday: enter a year (2000 or after): ";
-            while(!(cin >> year) || year <= 2000) {
-                cout << "\nInvalid input, enter a year 2000 or after: ";
+            while(!(cin >> year) || year < 2000) {
+                cout << "\nInvalid input, enter a year (2000 or after): ";
+                cin.clear();
+                cin.ignore(100, '\n');
+                continue;
             }
 
                 remainderA = year % 19;
