@@ -1,50 +1,62 @@
 //Aaron Hunter.
 //Unit 7 Programming Assignment 1 - Gross Pay.
 //Write a C++ program to calculate gross pay for any number of employees until a 0 is entered for the number of hours worked.
-//Also calculate and display the total gross pay.
-/*Method to calculate the gross pay.
-This method should use a single-sided decision to add(+) over-time-pay equal(==) to half(.5) of the hourly pay-rate multiplied(*) by hours-worked over(/) 40.*/
 #include<iostream>
+#include<string>
+#include<cstdio>
 using namespace std;
 
 void getHoursWorked(double &, int);
 void getHourlyPay(double &);
-double calculateGrossPay(double, double);
+double calculateGrossPay(double, double, double);
 void calcOvertimePay(double &, double, double);
+void totalGrossPay(double&, double, double);
+
+const int BUFFER_SIZE = 1000;
+const int COLUMN_WIDTH = 15;
 
 int main(){
 
-    double hoursWorked, hourlyPay, grossPay, overtimePay = 0;
+    double hoursWorked, hourlyPay, grossPay, total, overtimePay = 0;
     int employee = 1;
+    string outputString = "";
+    char outBuffer[BUFFER_SIZE];
+
+    snprintf(outBuffer, BUFFER_SIZE, "\n%-s%*s%*s%-s%*s%*s\n%s", "Hours", COLUMN_WIDTH, "Hourly", COLUMN_WIDTH, "Gross\n", "Worked", COLUMN_WIDTH-1, "Pay", COLUMN_WIDTH-1, "Pay", "______________________________________");
+    outputString += outBuffer;
 
     do {
 
         getHoursWorked(hoursWorked, employee);
-
         if (hoursWorked == 0) {
             break;
         }
 
         getHourlyPay(hourlyPay);
-        grossPay = calculateGrossPay(hoursWorked, hourlyPay);
         calcOvertimePay(overtimePay, hourlyPay, hoursWorked);
+        grossPay = calculateGrossPay(hoursWorked, hourlyPay, overtimePay);
+        totalGrossPay(total, grossPay, overtimePay);
 
-        cout << "\nHours Worked: " << hoursWorked << " hrs";
-        cout << "\nHourly Pay: $" << hourlyPay;
-        cout << "\nGross Pay: $" << grossPay;
-        cout << "\nOvertime Pay: $" << overtimePay << endl;
-
+        snprintf(outBuffer, BUFFER_SIZE, "\n%-.2f%*.2f%*.2f", hoursWorked, COLUMN_WIDTH, hourlyPay, COLUMN_WIDTH, grossPay);
+        outputString += outBuffer;
+        cout << outputString;;
         employee++;
 
-  }while (true);
+  }while(true);
+
+    snprintf(outBuffer, BUFFER_SIZE, "\n%s\n%-s%*.2f\n", "______________________________________", "Total Gross Pay: ", COLUMN_WIDTH + 3, total);
+    outputString += outBuffer;
+    cout << outputString;
 
     system("pause");
     return 0;
+
  }
+
 
 void getHoursWorked(double& hoursWorked, int employee)
 {
-    cout << "\nEnter Hours worked for employee " << employee << " (enter 0 if you wish to exit): ";
+    cout << "\nEnter Hours worked for employee " << employee << ", or enter 0 if you wish to exit: ";
     while(!(cin >> hoursWorked) || hoursWorked < 0 ){
         cout << "\nError, value entered was less than 0. Enter a value greater then 0: ";
         cin.clear();
@@ -52,6 +64,7 @@ void getHoursWorked(double& hoursWorked, int employee)
         continue;
     }
 }
+
 
 void getHourlyPay(double& hourlyPay)
 {
@@ -64,15 +77,23 @@ void getHourlyPay(double& hourlyPay)
     }
 }
 
+
  void calcOvertimePay(double& overtimePay, double hourlyPay, double hoursWorked)
  {
     if(hoursWorked > 40){
-        overtimePay = (hoursWorked - 40) * hourlyPay * 0.5;
+        overtimePay = (hoursWorked - 40) * (hourlyPay * 0.5);
     }
 }
 
-double calculateGrossPay(double hourlyPay, double hoursWorked)
+
+void totalGrossPay(double& total, double grossPay, double overtimePay)
 {
-    double grossPay = hoursWorked * hourlyPay;
+    total += grossPay + overtimePay;
+}
+
+
+double calculateGrossPay(double hoursWorked, double hourlyPay, double overtimePay)
+{
+    double grossPay = (hoursWorked * hourlyPay) + overtimePay;
     return grossPay;
 }
