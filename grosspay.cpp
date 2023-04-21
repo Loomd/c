@@ -6,10 +6,10 @@
 #include<cstdio>
 using namespace std;
 
-void getHoursWorked(double &, int);
-void getHourlyPay(double &);
+void getHoursWorked(double&, int);
+void getHourlyPay(double&);
 double calculateGrossPay(double, double, double);
-void calcOvertimePay(double &, double, double);
+void calcOvertimePay(double&, double, double);
 void totalGrossPay(double&, double, double);
 
 const int BUFFER_SIZE = 1000;
