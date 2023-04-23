@@ -20,7 +20,7 @@ int main (){
 
     snprintf(outBuffer, sizeof(outBuffer), "%-*s%*s\n%s", COLUMN_WIDTH, "Month", COLUMN_WIDTH+5, "Balance", "____________________________");
     outputString += outBuffer;
-    
+
     while(balance < SENTINEL_VALUE ){
 
         balance *= DOUBLE;
